@@ -1,2 +1,9 @@
-<h1>Pages#index</h1>
-<p>Find me in app/views/pages/index.html.erb</p>
+<h1>All Blog Posts</h1>
+
+
+<% @pages.each do |page| %>
+  <%= page.title %>
+  <%= page.author %>
+  <%= link_to 'Blog', page_path(page) %>
+
+<% end %>

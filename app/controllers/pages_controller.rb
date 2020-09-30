@@ -8,6 +8,28 @@ class PagesController < ApplicationController
   end
 
   def new
-    @page = Page.create
+    @page = Page.new
   end
+
+  def create
+    @page = Page.new(page_params)
+      
+    if @page.save
+      redirect_to pages_path
+    else 
+      render :new
+    end
+  end
+
+  def edit
+    @page = Page.find(params[:id])
+  end
+
+
+
+  private
+
+    def page_params
+      params.require(:page).permit(:title, :author, :body)
+    end
 end
